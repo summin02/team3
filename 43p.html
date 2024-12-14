@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>꽃의 꽃말</title>
+    <style>
+      body {
+        background: linear-gradient(to bottom right, #a8e0ff, #f0f8ff);
+        font-family: Arial, sans-serif;
+      }
+      .section {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .plant {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .flower_grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      td {
+        border: 1px solid #27bb49;
+        padding: 2px;
+        text-align: center;
+        width: 50px;
+      }
+      .td1 {
+        width: 150px;
+      }
+      .flower_card img {
+        width: 150px;
+        height: 200px;
+        object-fit: cover;
+        margin-right: 20px;
+      }
+      .mainfont {
+        font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <span class="question">
+          <img src="화분.png" class="plant" />
+          꽃 기억하기
+        </span>
+        <p class="mainfont">
+          앞서 기억해 둔 꽃의 꽃말입니다. 소리 내어 읽어보세요.
+        </p>
+        <span class="flower_grid">
+          <table class="flower_card">
+            <tr>
+              <td rowspan="2"><img src="철쭉.webp" /></td>
+              <td><strong>이름</strong></td>
+              <td>철쭉</td>
+            </tr>
+            <tr>
+              <td><strong>꽃말</strong></td>
+              <td class="td1">사랑의 즐거움</td>
+            </tr>
+          </table>
+          <table class="flower_card">
+            <tr>
+              <td rowspan="2"><img src="개나리.jpg" /></td>
+              <td><strong>이름</strong></td>
+              <td>개나리</td>
+            </tr>
+            <tr>
+              <td><strong>꽃말</strong></td>
+              <td class="td1">희망</td>
+            </tr>
+          </table>
+          <table class="flower_card">
+            <tr>
+              <td rowspan="2"><img src="백목련.jpg" /></td>
+              <td><strong>이름</strong></td>
+              <td>백목련</td>
+            </tr>
+            <tr>
+              <td><strong>꽃말</strong></td>
+              <td class="td1">이루지 못할 사랑랑</td>
+            </tr>
+          </table>
+          <table class="flower_card">
+            <tr>
+              <td rowspan="2"><img src="백일홍.jpg" /></td>
+              <td><strong>이름</strong></td>
+              <td>백일홍</td>
+            </tr>
+            <tr>
+              <td><strong>꽃말</strong></td>
+              <td class="td1">행복</td>
+            </tr>
+          </table>
+          <table class="flower_card">
+            <tr>
+              <td rowspan="2"><img src="장미.webp" /></td>
+              <td><strong>장미</strong></td>
+              <td>철쭉</td>
+            </tr>
+            <tr>
+              <td><strong>꽃말</strong></td>
+              <td class="td1">사랑</td>
+            </tr>
+          </table>
+          <table class="flower_card">
+            <tr>
+              <td rowspan="2"><img src="참꽃.jpg" /></td>
+              <td><strong>이름</strong></td>
+              <td>참꽃</td>
+            </tr>
+            <tr>
+              <td><strong>꽃말</strong></td>
+              <td class="td1">다정</td>
+            </tr>
+          </table>
+        </span>
+
+        <span class="question">
+          <img src="화분.png" class="plant" />
+          <span class="mainfont">
+            보고 생각나는 사람이 있다면, 그 사람에게 꽃을 선물해 봅시다.</span
+          >
+        </span>
+        <p class="mainfont"><strong>꽃을 기억해 주세요.</strong></p>
+      </div>
+    </div>
+  </body>
+  <div class="section">
+    <button id="nextpage" onclick="nextpage()">다음 페이지</button>
+    <script>
+      document.getElementById("nextpage").addEventListener("click", () => {
+        window.location.href = "44p.html";
+      });
+    </script>
+  </div>
+</html>

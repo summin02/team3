@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style(intro,44,45).css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>44페이지</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <section id="flower-section" class="section">
+          <span class="question">
+            <img src="화분.png" class="plant" alt="화분" />
+            지하철 노선도
+          </span>
+          <span class="question">
+            <pre>
+경수 씨는 지하철 꽃 배달을 하고 있습니다. 지하철 노선도를 보고
+아래의 문제를 풀어보세요(1~2).
+            </pre>
+          </span>
+          <fieldset>
+            <img src="노선도.jpg" class="subway-img" />
+          </fieldset>
+          <fieldset>
+            <pre>
+1. 선릉역에서 물건을 받아 2호선을 타고 사당역에 가려고 합니다.
+선릉역에서 사당역까지 가는 경로와 소요시간을 적어보세요.(각 역마다 소요시간은 2분입니다.)
+선릉 -> <input type="text", id = "question1_station1"> -> <input type="text", id = "question1_station2"> 
+-> <input type="text", id = "question1_station3"> ->  <input type="text", id = "question1_station4"> ->  <input type="text", id = "question1_station5"> ->  <input type="text", id = "question1_station6">
+소요시간 : <input type="number" id = "question1_timetaken">분 
+            </pre>
+          </fieldset>
+          <fieldset>
+            <pre>
+2. 3호선 양재역에서 동작역까지 가장 빠르게 갈 수 있는 경로와 환승역과
+도착시간을 적어보세여 (각 역마다 소요시간은 2분이고, 환승소요시간은 
+5분입니다.)
+양재 -> <input type="text", id = "question2_stations">
+환승역(다른 노선으로 바꾸어 탈 수 있도록 마련된 역) : <input type="text", id = "question2_transfer">
+소요시간 : <input type="number" id = "question2_timetaken">분 
+            </pre>
+          </fieldset>
+        </section>
+        <button id="submit_Button">정답 확인</button>
+      </main>
+      <footer class="footer">44</footer>
+    </div>
+    <script>
+      let question1 = {
+        station1: "",
+        station2: "",
+        station3: "",
+        station4: "",
+        station5: "",
+        station6: "",
+        timetaken: 0,
+      };
+
+      let answer1 = { ...question1 };
+
+      let solution1 = { ...question1 };
+      solution1.station1 = "역삼";
+      solution1.station2 = "강남";
+      solution1.station3 = "교대";
+      solution1.station4 = "서초";
+      solution1.station5 = "방배";
+      solution1.station6 = "사당";
+      solution1.timetaken = "12";
+
+      let question2 = {
+        stations: "",
+        transfer: "",
+        timetaken: 0,
+      };
+      let answer2 = { ...question2 };
+
+      let solution2 = { ...question2 };
+      solution2.stations = "남부터미널 교대 고속터미널 신반포 구반포 동작";
+      solution2.transfer = "고속터미널";
+      solution2.timetaken = "17";
+
+      const onClickSubmitButton = () => {
+        let mark = [];
+
+        for (
+          let i = 0;
+          i < Object.keys(question1).length + Object.keys(question2).length;
+          i++
+        ) {
+          mark.push(0);
+        }
+
+        for (let i = 0; i < mark.length; i++) {
+          if (i < Object.keys(question1).length) {
+            if (
+              Object.values(answer1)[i] != Object.values(solution1)[i] ||
+              Object.values(answer1)[i] == ""
+            ) {
+              mark[i] = 1;
+            }
+          } else {
+            console.log(i - Object.keys(question1).length);
+            console.log(
+              Object.values(answer2)[i - Object.keys(question1).length]
+            );
+            console.log(
+              Object.values(solution2)[i - Object.keys(question1).length]
+            );
+
+            if (
+              Object.values(answer2)[i - Object.keys(question1).length] !=
+                Object.values(solution2)[i - Object.keys(question1).length] ||
+              Object.values(answer2)[i - Object.keys(question1).length] == ""
+            ) {
+              mark[i] = 1;
+            }
+          }
+        }
+        console.log(mark);
+        mark.forEach((x, index) => {
+          console.log(index);
+          if (mark[index] == 1) {
+            if (index < Object.keys(question1).length - 1) {
+              const $temp = document.querySelector(
+                `#question1_station${index + 1}`
+              );
+              $temp.style.borderColor = "red";
+            } else if (index === Object.keys(question1).length - 1) {
+              const $temp = document.querySelector(`#question1_timetaken`);
+              $temp.style.borderColor = "red";
+            } else if (index - Object.keys(question1).length === 0) {
+              const $temp = document.querySelector(`#question2_stations`);
+              $temp.style.borderColor = "red";
+            } else if (index - Object.keys(question1).length === 1) {
+              const $temp = document.querySelector(`#question2_transfer`);
+              $temp.style.borderColor = "red";
+            } else if (index - Object.keys(question1).length === 2) {
+              const $temp = document.querySelector(`#question2_timetaken`);
+              $temp.style.borderColor = "red";
+            }
+          }
+        });
+        console.log(mark.indexOf(1));
+        if (mark.indexOf(1) != -1) {
+          alert("오답, 색깔이 바뀐 부분을 다시 풀어보아요");
+        } else {
+          alert("정답 잘하셨어요");
+          window.location.href = "45p.html";
+        }
+      };
+
+      const onInput = (number, questionNumber) => {
+        return (event) => {
+          if (questionNumber == 1) {
+            switch (number) {
+              case 1:
+                answer1.station1 = event.target.value;
+                break;
+
+              case 2:
+                answer1.station2 = event.target.value;
+                break;
+
+              case 3:
+                answer1.station3 = event.target.value;
+                break;
+
+              case 4:
+                answer1.station4 = event.target.value;
+                break;
+
+              case 5:
+                answer1.station5 = event.target.value;
+                break;
+
+              case 6:
+                answer1.station6 = event.target.value;
+                break;
+
+              case 0:
+                answer1.timetaken = event.target.value;
+                break;
+
+              default:
+                break;
+            }
+          } else if (questionNumber == 2) {
+            switch (number) {
+              case 1:
+                answer2.stations = event.target.value;
+                break;
+
+              case 2:
+                answer2.transfer = event.target.value;
+                break;
+
+              case 0:
+                answer2.timetaken = event.target.value;
+                break;
+
+              default:
+                break;
+            }
+          }
+        };
+      };
+
+      const arr = [1, 2, 3, 4, 5, 6];
+      arr.forEach((number) => {
+        document
+          .querySelector(`#question1_station${number}`)
+          .addEventListener("input", onInput(number, 1));
+      });
+      document
+        .querySelector(`#question1_timetaken`)
+        .addEventListener("input", onInput(0, 1));
+
+      document
+        .querySelector(`#question2_stations`)
+        .addEventListener("input", onInput(1, 2));
+      document
+        .querySelector(`#question2_transfer`)
+        .addEventListener("input", onInput(2, 2));
+      document
+        .querySelector(`#question2_timetaken`)
+        .addEventListener("input", onInput(0, 2));
+
+      document
+        .querySelector("#submit_Button")
+        .addEventListener("click", onClickSubmitButton);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>꽃과 꽃말 연결하기</title>
+    <style>
+      body {
+        background: linear-gradient(to bottom right, #a8e0ff, #f0f8ff);
+        font-family: Arial, sans-serif;
+      }
+      .section {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+      .plant {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+        width: auto;
+        position: relative;
+      }
+      .container1 {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .flower_container,
+      .meaning_container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .flower_item,
+      .meaning_item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        cursor: pointer;
+        padding: 10px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 125px;
+        height: 50px;
+      }
+
+      .flower_item img {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .flower_dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #000;
+        position: absolute;
+        left: 155px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .meaning_dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #000;
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .line {
+        position: absolute;
+        height: 2px;
+        background-color: black;
+        pointer-events: none;
+        transform-origin: 0 0;
+        left: 0;
+        top: 0;
+      }
+
+      .selected {
+        background-color: #e0e0e0;
+      }
+
+      .correct {
+        background-color: #a4e4a4;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <div class="container1">
+        <span class="question">
+          <img src="화분.png" class="plant" />
+          꽃 기억하기
+          <h1>앞서 기억해 둔 꽃과 꽃말을 연결헤보세요.</h1>
+        </span>
+
+        <div class="container">
+          <div class="flower_container">
+            <div class="flower_item" id="flower1" answer="사랑의 즐거움">
+              <img src="철쭉.webp" class="flower_img" />철쭉
+              <div class="flower_dot"></div>
+            </div>
+            <div class="flower_item" id="flower2" answer="희망">
+              <img src="개나리.jpg" class="flower_img" />개나리
+              <div class="flower_dot"></div>
+            </div>
+            <div class="flower_item" id="flower3" answer="행복">
+              <img src="백일홍.jpg" class="flower_img" />백일홍
+              <div class="flower_dot"></div>
+            </div>
+            <div class="flower_item" id="flower4" answer="사랑">
+              <img src="장미.webp" class="flower_img" />장미
+              <div class="flower_dot"></div>
+            </div>
+            <div class="flower_item" id="flower5" answer="다정">
+              <img src="참꽃.jpg" class="flower_img" />참꽃
+              <div class="flower_dot"></div>
+            </div>
+            <div class="flower_item" id="flower6" answer="이루지 못할 사랑">
+              <img src="백목련.jpg" class="flower_img" />백목련
+              <div class="flower_dot"></div>
+            </div>
+          </div>
+
+          <div class="meaning_container">
+            <div class="meaning_item" id="meaning1">
+              사랑의 즐거움
+              <div class="meaning_dot"></div>
+            </div>
+            <div class="meaning_item" id="meaning2">
+              희망
+              <div class="meaning_dot"></div>
+            </div>
+            <div class="meaning_item" id="meaning3">
+              행복
+              <div class="meaning_dot"></div>
+            </div>
+            <div class="meaning_item" id="meaning4">
+              사랑
+              <div class="meaning_dot"></div>
+            </div>
+            <div class="meaning_item" id="meaning5">
+              다정
+              <div class="meaning_dot"></div>
+            </div>
+            <div class="meaning_item" id="meaning6">
+              이루지 못할 사랑
+              <div class="meaning_dot"></div>
+            </div>
+          </div>
+
+          <div class="line_container" id="line_container"></div>
+        </div>
+
+        <script>
+          function shuffleElements(container) {
+            const items = Array.from(container.children);
+            for (let i = items.length - 1; i > 0; i--) {
+              const randomIndex = Math.floor(Math.random() * (i + 1));
+              [items[i], items[randomIndex]] = [items[randomIndex], items[i]];
+            }
+            items.forEach((item) => container.appendChild(item));
+          }
+
+          window.addEventListener("DOMContentLoaded", () => {
+            const flCon = document.querySelector(".flower_container");
+            const meCon = document.querySelector(".meaning_container");
+
+            shuffleElements(flCon);
+            shuffleElements(meCon);
+          });
+
+          let selectedFlower = null;
+          const flowers = document.querySelectorAll(".flower_item");
+          const meanings = document.querySelectorAll(".meaning_item");
+          const lineContainer = document.getElementById("line_container");
+
+          flowers.forEach((flower) => {
+            flower.addEventListener("click", () => {
+              if (selectedFlower) {
+                selectedFlower.classList.remove("selected");
+              }
+              selectedFlower = flower;
+              selectedFlower.classList.add("selected");
+            });
+          });
+
+          meanings.forEach((meaning) => {
+            meaning.addEventListener("click", () => {
+              if (selectedFlower) {
+                const correctAnswer = selectedFlower.getAttribute("answer");
+                const selectedMeaning = meaning.textContent.trim();
+
+                if (correctAnswer === selectedMeaning) {
+                  const flowerRect = selectedFlower
+                    .querySelector(".flower_dot")
+                    .getBoundingClientRect();
+                  const meaningRect = meaning
+                    .querySelector(".meaning_dot")
+                    .getBoundingClientRect();
+
+                  const startX = flowerRect.left + flowerRect.width - 30;
+                  const startY = flowerRect.top + flowerRect.height - 170;
+                  const endX = meaningRect.left + meaningRect.width - 30;
+                  const endY = meaningRect.top + meaningRect.height - 170;
+                  const length =
+                    Math.sqrt(
+                      Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2)
+                    ) - 1;
+                  const angle =
+                    Math.atan2(endY - startY, endX - startX) * (180 / Math.PI);
+
+                  const line = document.createElement("div");
+                  line.classList.add("line");
+                  line.style.width = `${length}px`;
+                  line.style.transform = `rotate(${angle}deg)`;
+                  line.style.left = `${startX}px`;
+                  line.style.top = `${startY}px`;
+                  lineContainer.appendChild(line);
+
+                  selectedFlower.classList.add("correct");
+                  meaning.classList.add("correct");
+                }
+                selectedFlower.classList.remove("selected");
+                selectedFlower = null;
+              }
+            });
+          });
+        </script>
+      </div>
+    </div>
+    <div class="section">
+      <button id="nextpage" onclick="nextpage()">다음 페이지</button>
+      <script>
+        document.getElementById("nextpage").addEventListener("click", () => {
+          window.location.href = "47p.html";
+        });
+      </script>
+    </div>
+  </body>
+</html>

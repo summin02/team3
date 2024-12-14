@@ -1,0 +1,236 @@
+body {
+  background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+button {
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="number"],
+input[type="text"] {
+  border: 2px solid green;
+  border-radius: 5px;
+  padding: 5px;
+  transition: border 0.3s;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+  border: 2px solid green;
+  outline: none;
+}
+
+.section {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  border: 2px solid green;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+legend {
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.plant {
+  width: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.dateimg.active {
+  border: 3px solid green;
+  border-radius: 5px;
+}
+
+.dateimg {
+  width: 30px;
+  height: auto;
+  margin-top: 1px;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: filter 0.3s;
+}
+
+.dateinput {
+  width: 50px;
+  height: 25px;
+  margin: 0 5px;
+  text-align: right;
+}
+
+.clockmain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.clockitem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  min-width: 150px;
+  box-sizing: border-box;
+}
+
+.clock {
+  width: 100%;
+  max-width: 200px;
+  margin-bottom: 10px;
+}
+
+.timeinputcontainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.usertime {
+  width: 120px;
+  padding: 5px;
+  border: 2px solid green;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  color: #333;
+  font-weight: bold;
+}
+
+.flowercontainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.floweritem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+  margin: 5px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.flowerimg {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.mapcontainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  width: 80%;
+}
+
+.mapcontainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
+.map {
+  position: absolute;
+  border: 2px solid skyblue;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: white;
+  font-size: 16px;
+  width: 130px;
+}
+
+#mapflower1 {
+  top: 13%;
+  left: 30%;
+}
+
+#mapflower2 {
+  top: 23%;
+  left: 20%;
+}
+
+#mapflower3 {
+  top: 35%;
+  left: 20%;
+}
+
+#mapflower4 {
+  top: 60%;
+  left: 10%;
+}
+
+#mapflower5 {
+  top: 50%;
+  left: 35%;
+}
+
+#mapflower6 {
+  top: 83%;
+  left: 5%;
+}
+
+pre {
+  font-size: 25px;
+}
+
+.timeinput {
+  width: 50px;
+  text-align: right;
+  padding: 5px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}

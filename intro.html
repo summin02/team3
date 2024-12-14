@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro</title>
+    <link rel="stylesheet" href="style(intro,44,45).css" />
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1 id="title">환영합니다</h1>
+    </header>
+    <main>
+      <p id="introduce">3조 팀프로젝트입니다</p>
+      <section id="login">
+        <div>
+          <input type="text" id="nameInput" placeholder="이름" class="input-login" />
+        </div>
+        <div>
+          <input type="text" id="ageInput" placeholder="나이" class="input-login" />
+        </div>
+        <input id="loginButton" type="button" value="로그인" />
+      </section>
+    </main>
+
+    <script>
+
+      let name;
+      let age;
+
+
+      const onInput = (number) => {
+          return (event) => {
+              switch (number) {
+
+                case 1: 
+                  name = (event.target.value); 
+                  break;
+
+                case 2: 
+                  age = (event.target.value);
+                  break;
+
+                default:
+                    break;
+              }
+          }
+      }
+
+
+      const onClickLoginButton = () => {
+
+        if(name&&age) { 
+
+          alert('환영합니다. '+name+'님')          
+          window.location.href = "41p.html";
+        }
+        else {
+          alert('이름 혹은 나이를 입력해주세요.')
+        }
+      }
+
+      document.querySelector(`#nameInput`).addEventListener('input',onInput(1));
+      document.querySelector(`#ageInput`).addEventListener('input',onInput(2));
+      document.querySelector(`#loginButton`).addEventListener('click',onClickLoginButton);
+      
+
+    </script>
+  </body>
+</html>

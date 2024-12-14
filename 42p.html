@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style(41,42).css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>꽃 맞추기</title>
+  </head>
+  <body>
+    <main>
+      <section id="flowersection" class="section">
+        <span class="question">
+          <img src="화분.png" class="plant" alt="화분 이미지" />
+          꽃 기억하기
+        </span>
+        <p>
+          앞서 기억해 둔 꽃은 각 도를 상징하는 꽃입니다. 각 꽃의 지역을 확인하고
+          빈칸에 꽃 이름을 적어보세요.
+        </p>
+        <fieldset>
+          <div class="flowercontainer">
+            <div class="floweritem">
+              <img src="철쭉.webp" class="flowerimg" alt="철쭉 이미지" />
+              <span>강원도</span>
+              <input type="text" placeholder="꽃 이름" id="flower1" />
+            </div>
+            <div class="floweritem">
+              <img src="개나리.jpg" class="flowerimg" alt="개나리 이미지" />
+              <span>경기도</span>
+              <input type="text" placeholder="꽃 이름" id="flower2" />
+            </div>
+            <div class="floweritem">
+              <img src="백목련.jpg" class="flowerimg" alt="백목련 이미지" />
+              <span>충청도</span>
+              <input type="text" placeholder="꽃 이름" id="flower3" />
+            </div>
+            <div class="floweritem">
+              <img src="백일홍.jpg" class="flowerimg" alt="백일홍 이미지" />
+              <span>전라도</span>
+              <input type="text" placeholder="꽃 이름" id="flower4" />
+            </div>
+            <div class="floweritem">
+              <img src="장미.webp" class="flowerimg" alt="장미 이미지" />
+              <span>경상도</span>
+              <input type="text" placeholder="꽃 이름" id="flower5" />
+            </div>
+            <div class="floweritem">
+              <img src="참꽃.jpg" class="flowerimg" alt="참꽃 이미지" />
+              <span>제주도</span>
+              <input type="text" placeholder="꽃 이름" id="flower6" />
+            </div>
+          </div>
+        </fieldset>
+        <button id="flowersubmitbutton">꽃 문제 정답 확인</button>
+      </section>
+      <section class="mapcontainer">
+        <img src="백지도.png" alt="지도" />
+        <input type="text" class="map" placeholder="강원도" id="mapflower1" />
+        <input type="text" class="map" placeholder="경기도" id="mapflower2" />
+        <input type="text" class="map" placeholder="충청도" id="mapflower3" />
+        <input type="text" class="map" placeholder="전라도" id="mapflower4" />
+        <input type="text" class="map" placeholder="경상도" id="mapflower5" />
+        <input type="text" class="map" placeholder="제주도" id="mapflower6" />
+        <button id="mapsubmitbutton">지도 문제 정답 확인</button>
+        <button id="nextpage">다음 페이지</button>
+      </section>
+    </main>
+    <footer id="leftfooter">42</footer>
+
+    <script>
+      const answers = ["철쭉", "개나리", "백목련", "백일홍", "장미", "참꽃"];
+      const checkanswers = (useranswers) =>
+        useranswers.every((answer, index) => answer === answers[index]);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document
+          .getElementById("flowersubmitbutton")
+          .addEventListener("click", () => {
+            const floweranswers = [
+              document.getElementById("flower1").value.trim(),
+              document.getElementById("flower2").value.trim(),
+              document.getElementById("flower3").value.trim(),
+              document.getElementById("flower4").value.trim(),
+              document.getElementById("flower5").value.trim(),
+              document.getElementById("flower6").value.trim(),
+            ];
+
+            if (checkanswers(floweranswers)) {
+              alert("꽃 문제 정답입니다! 다음 문제를 풀어주세요.");
+            } else {
+              alert("꽃 문제에 틀린 답이 있습니다. 다시 확인해 주세요.");
+            }
+          });
+
+        document
+          .getElementById("mapsubmitbutton")
+          .addEventListener("click", () => {
+            const mapanswers = [
+              document.getElementById("mapflower1").value.trim(),
+              document.getElementById("mapflower2").value.trim(),
+              document.getElementById("mapflower3").value.trim(),
+              document.getElementById("mapflower4").value.trim(),
+              document.getElementById("mapflower5").value.trim(),
+              document.getElementById("mapflower6").value.trim(),
+            ];
+
+            if (checkanswers(mapanswers)) {
+              alert("지도 문제 정답입니다! 다음 페이지로 넘어가주세요.");
+            } else {
+              alert("지도 문제에 틀린 답이 있습니다. 다시 확인해 주세요.");
+            }
+          });
+
+        document.getElementById("nextpage").addEventListener("click", () => {
+          window.location.href = "43p.html";
+        });
+      });
+    </script>
+  </body>
+</html>
