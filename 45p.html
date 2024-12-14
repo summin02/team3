@@ -11,7 +11,7 @@
         <main>
           <section id="flower-section" class="section">
             <span class="question">
-              <img src="화분.jpg" class="plant" alt="화분" />
+              <img src="화분.png" class="plant" alt="화분" />
               꽃 기억하기
             </span>
             <fieldset>
@@ -23,7 +23,7 @@
             </fieldset>
           </section>
           <section class="map-container">
-            <img src="지도.jpg" alt="지도" />
+            <img src="백지도.png" alt="지도" />
             <input
               type="text"
               class="input-box input-gangwon"
@@ -65,7 +65,7 @@
         </main>
           <button id="submit_Button">정답 확인</button>
         </main>
-        <footer class="footer">45</footer>
+        <footer class="footer">44</footer>
       </div>
     <script>
         const arr = [1,2,3,4,5,6];
@@ -125,6 +125,16 @@
                   else {
                     const $temp =  document.querySelector(`#question2_state${index-Object.keys(questions).length+1}`)
                     $temp.style.borderColor = 'red';
+                  }
+                }
+                else {
+                  if(index<Object.keys(questions).length){
+                    const $temp = document.querySelector(`#question1_flower${index+1}`);
+                    $temp.style.borderColor = 'green';
+                  }
+                  else {
+                    const $temp =  document.querySelector(`#question2_state${index-Object.keys(questions).length+1}`)
+                    $temp.style.borderColor = 'green';
                   }
                 }
               })
